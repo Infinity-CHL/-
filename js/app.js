@@ -162,9 +162,21 @@
             card.classList.remove('flip');
             let ramdomPos = Math.ceil(Math.random() * 12);
             card.style.order = ramdomPos;
+
+            card.addEventListener('click', flipCard)
+            card.addEventListener('click', () => {
+              const amountCards = cards.length;
+              const amountFlipCards = document.querySelectorAll('.flip');
+
+              if (amountFlipCards.length == amountCards) {
+                let btn = document.querySelector('.btn-container')
+                btn.classList.add('active');
+                finishGameBtn(document.querySelector('.btn-container'));
+              };
+            })
           });
         })();
-        btn.classList.remove('active');
+        btn.classList.remove('active')
       })
     };
 
@@ -180,7 +192,6 @@
         finishGameBtn(document.querySelector('.btn-container'));
       };
     }));
-
   });
 
 })();
